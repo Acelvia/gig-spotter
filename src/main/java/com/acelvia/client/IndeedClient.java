@@ -24,7 +24,7 @@ public class IndeedClient {
                 .queryParam("publisher", settings.getIndeedApiKey())
                 .queryParam("v", 2)
                 .queryParam("q", "java")
-                .queryParam("l", "austin")
+                .queryParam("l", city)
                 .request(MediaType.APPLICATION_XML_TYPE)
                 .get(Response.class);
 
