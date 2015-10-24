@@ -7,16 +7,12 @@ export class Autofill {
   fetchResults() {}
 
   onChange(event) {
-      if (event.keyCode == 13) {
-        // User pressed enter, start the search
-        this.fetchResults();
-      } else {
-        this.fetchSuggestions();
-      }
+    this.fetchSuggestions();
   }
 
   onSuggestionClick(event) {
     this.value = event.toElement.innerHTML;
     this.suggestions = [];
+    this.fetchResults();
   }
 }

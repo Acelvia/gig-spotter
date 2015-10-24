@@ -1,4 +1,5 @@
 /// <reference path="./google.maps.d.ts" />
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Component, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 import {Autofill} from './classes/autofill';
 
@@ -8,8 +9,10 @@ import {Autofill} from './classes/autofill';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 class CityAutofillComponent extends Autofill {
-  public service = null;
-  constructor() {
+  jobs: Job[] = [];
+  service: google.maps.places.AutocompleteService = null;
+
+  constructor(public http: Http) {
     super();
     this.service = new google.maps.places.AutocompleteService();
   }
@@ -27,6 +30,31 @@ class CityAutofillComponent extends Autofill {
       });
     }
   }
+
+  fetchResults() {
+      this.http.get("/jobs?city=" + this.value)
+          .map(res => res.json())
+          .subscribe(jobs => this.process(jobs));
+  }
+
+  process(jobs) {
+      this.jobs = [];
+
+      for(var i = 0; i < jobs.length; i++) {
+        var obj = jobs[i];
+        this.jobs.push(new Job("" + obj.jobtitle, "" + obj.url));
+      }
+  }
 }
 
-bootstrap(CityAutofillComponent);
+@Component({
+  selector: 'job',
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES ]
+})
+class Job {
+
+    constructor(public jobtitle : string, public url : string) {
+    }
+}
+
+bootstrap(CityAutofillComponent, [HTTP_PROVIDERS]);
