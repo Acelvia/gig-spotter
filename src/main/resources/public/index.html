@@ -4,13 +4,12 @@
     <script src="../../node_modules/systemjs/dist/system.src.js"></script>
     <script src="../../node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWOU36_aLESVSSCFsrk4WdH9Q1mXdamgo&sensor=false"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWOU36_aLESVSSCFsrk4WdH9Q1mXdamgo&sensor=false&libraries=places"></script>
     <script>
       System.config({
-        packages: {'test': {defaultExtension: 'js'}}
+        packages: {'js': {defaultExtension: 'js'}},
       });
-      System.import('../js/classes/autofill.js');
-      System.import('../js/city-autofill.js');
+      System.import('js/city-autofill.js');
       System.import('js/test.js');
     </script>
     <script type="text/javascript" src="js/mapping.js"></script>

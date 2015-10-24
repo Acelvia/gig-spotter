@@ -1,5 +1,6 @@
+/// <reference path="./google.maps.d.ts" />
 import {Component, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
-/// <reference path="./classes/autofill.ts" />
+import {Autofill} from './classes/autofill';
 
 @Component({
   selector: 'city-autofill',
@@ -7,8 +8,24 @@ import {Component, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/a
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 class CityAutofillComponent extends Autofill {
+  public service = null;
+  constructor() {
+    super();
+    this.service = new google.maps.places.AutocompleteService();
+  }
   fetchSuggestions() {
-    this.suggestions = this.value.split('');
+    var self = this;
+    if(this.value) {
+      this.service.getPlacePredictions({ 
+          input: this.value, 
+          types: ['(cities)']
+        }, function(predictions, status) {
+          if (status != google.maps.places.PlacesServiceStatus.OK) {
+            return;
+          }
+          self.suggestions = predictions.map(function(p) { return p.description; });
+      });
+    }
   }
 }
 

@@ -1,4 +1,4 @@
 <input type="text" (keyup)="onChange($event)" [(ng-model)]="value" />
-<div class="">
+<div>
   <div *ng-for="#suggestion of suggestions" (click)="onSuggestionClick($event)">{{suggestion}}</div>
 </div>

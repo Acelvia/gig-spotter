@@ -1,4 +1,4 @@
-class Autofill {
+export class Autofill {
   value: string;
   suggestions: string[];
 
@@ -10,5 +10,6 @@ class Autofill {
 
   onSuggestionClick(event) {
     this.value = event.toElement.innerHTML;
+    this.suggestions = [];
   }
 }
