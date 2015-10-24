@@ -9,7 +9,8 @@
   "dependencies": {
     "copyfiles": "^0.2.1",
     "angular2": "^2.0.0-alpha.14",
-    "systemjs": "^0.19.5"
+    "systemjs": "^0.19.5",
+    "markerclustererplus": "^2.1.4"
   },
   "author": "mdenti",
   "license": "ISC",
