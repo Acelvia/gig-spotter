@@ -2,10 +2,17 @@ class Autofill {
   value: string;
   suggestions: string[];
 
-  fetchSuggestions() {};
+  fetchSuggestions() {}
+
+  fetchResults() {}
 
   onChange(event) {
-    this.fetchSuggestions();
+      if (event.keyCode == 13) {
+        // User pressed enter, start the search
+        this.fetchResults();
+      } else {
+        this.fetchSuggestions();
+      }
   }
 
   onSuggestionClick(event) {

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Angular 2 QuickStart</title>
+    <title>GigSpotter</title>
     <script src="../../node_modules/systemjs/dist/system.src.js"></script>
     <script src="../../node_modules/angular2/bundles/angular2.dev.js"></script>
       <script src="../../node_modules/angular2/bundles/http.dev.js"></script>
@@ -10,13 +10,12 @@
 
     <script>
       System.config({
-        packages: {'test': {defaultExtension: 'js'}}
+        packages: {'js': {defaultExtension: 'js'}}
       });
 
       System.import('js/classes/autofill.js');
       System.import('js/city-autofill.js');
       System.import('js/test.js');
-      System.import('js/citysearch.js');
     </script>
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript">
@@ -28,7 +27,6 @@
   </head>
   <body>
     <city-autofill>loading...</city-autofill>
-    <citysearch>loading...</citysearch>
     <my-app>loading...</my-app>
     <div id="mapCanvas"></div>
   </body>
