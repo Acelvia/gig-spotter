@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc -p typescript",
-    "start": "live-server --open=public/html",
     "move_public": "copyfiles ./public/**/* ../src/main/resources",
     "move_modules": "copyfiles ./node_modules/**/* ../src/main/resources/public",
     "build": "npm run tsc && npm run move_public && npm run move_modules"
@@ -18,7 +17,6 @@
   "license": "ISC",
   "devDependencies": {
     "copyfiles": "^0.2.1",
-    "live-server": "^0.8.2",
     "typescript": "^1.6.2"
   }
 }
