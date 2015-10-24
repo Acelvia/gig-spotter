@@ -8,20 +8,15 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWOU36_aLESVSSCFsrk4WdH9Q1mXdamgo&sensor=false&libraries=places"></script>
     <script>
       System.config({
-        packages: {'js': {defaultExtension: 'js'}},
+        packages: {'js': {defaultExtension: 'js'}}
       });
       System.import('js/city-autofill.js');
-    </script>
-    <script type="text/javascript" src="js/mapping.js"></script>
-    <script type="text/javascript">
-      $(function() {
-        var googleMaps = new GoogleMap($('#mapCanvas')[0]);
-      });
+      System.import('js/mapping.js');
     </script>
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <city-autofill>loading...</city-autofill>
-    <div id="mapCanvas"></div>
+    <map></map>
   </body>
 </html>
