@@ -1,6 +1,5 @@
 frontend/node_modules
 frontend/public/js
-src/main/resources/node_modules
 src/main/resources/public
 .idea
 *.iml
