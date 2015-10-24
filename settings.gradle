@@ -1,2 +1,4 @@
-rootProject.name = 'gig-hunter'
+rootProject.name = 'gig-spotter'
+
+include 'frontend'
 

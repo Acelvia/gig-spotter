@@ -1,2 +1,2 @@
-# hackathon
+# gig-spotter
 Acelvia hackathon repository
