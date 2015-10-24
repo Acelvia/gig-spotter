@@ -2,27 +2,18 @@
   "name": "hackathon",
   "version": "0.0.0",
   "description": "angular2 frontend",
-  "main": "index.js",
   "scripts": {
-    "tsc": "tsc -p typescript",
-    "move_public": "copyfiles ./public/**/* ../src/main/resources",
-    "move_modules": "copyfiles ./node_modules/**/* ../src/main/resources/public",
-    "build": "npm run tsc && npm run move_public && npm run move_modules",
-    
-    "watch_ts": "watch \"npm run tsc\" typescript",
-    "watch_public": "watch \"npm run move_public\" public",
-    "watch_files": "parallelshell \"npm run watch_ts\" \"npm run watch_public\""
+    "tsc": "tsc -p typescript -w",
+    "postinstall": "copyfiles ./node_modules/**/* ../src/main/resources/public && tsc -p typescript"
   },
   "dependencies": {
+    "copyfiles": "^0.2.1",
     "angular2": "^2.0.0-alpha.14",
     "systemjs": "^0.19.5"
   },
   "author": "mdenti",
   "license": "ISC",
   "devDependencies": {
-    "copyfiles": "^0.2.1",
-    "parallelshell": "^2.0.0",
-    "typescript": "^1.6.2",
-    "watch": "^0.16.0"
+    "typescript": "^1.6.2"
   }
 }

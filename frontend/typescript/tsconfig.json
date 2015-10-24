@@ -7,6 +7,6 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "outDir": "../public/js"
+    "outDir": "../../src/main/resources/public/js"
   }
 }

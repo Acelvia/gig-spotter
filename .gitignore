@@ -1,6 +1,6 @@
 frontend/node_modules
-frontend/public/js
-src/main/resources/public
+src/main/resources/public/js
+src/main/resources/public/node_modules
 .idea
 *.iml
 .gradle
