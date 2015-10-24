@@ -16,3 +16,16 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
+
+// Run the Gradle build and start up the server using the goal bootRun
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.2.7.RELEASE'
+    }
+}
+
+apply plugin: 'spring-boot'
