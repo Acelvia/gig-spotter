@@ -1,13 +1,19 @@
 export class Autofill {
   value: string;
+  inputLabel: string;
   suggestions: string[];
+  suggestionsHidden: boolean;
 
   fetchSuggestions() {}
 
   fetchResults() {}
 
   onChange(event) {
-    this.fetchSuggestions();
+    if(!this.value) {
+      this.suggestions = [];
+    } else {
+      this.fetchSuggestions();
+    }
   }
 
   onSuggestionClick(event) {

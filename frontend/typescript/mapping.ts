@@ -4,10 +4,8 @@ import {Component, View, bootstrap} from 'angular2/angular2';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 
 @Component({
-    selector: 'map',
-    templateUrl: 'templates/map.html'
 })
-class GoogleMap {
+export class GoogleMap {
 
     map;
     markers = [];
@@ -15,6 +13,9 @@ class GoogleMap {
     longitude = 24.93227;
 
     constructor(public http: Http) {
+    }
+
+    init() {
         var self = this;
 
         this.map = new google.maps.Map(document.getElementById('mapCanvas'), {
@@ -33,7 +34,7 @@ class GoogleMap {
                 swLng = mapBounds.getSouthWest().lng();
 
             //http.get('/accommodation?latitude=' + self.latitude + '&longitude=' + self.longitude)
-            http.get('/accommodation?neLat=' + neLat + '&neLng=' + neLng + '&swLat=' + swLat + '&swLng=' + swLng)
+            self.http.get('/accommodation?neLat=' + neLat + '&neLng=' + neLng + '&swLat=' + swLat + '&swLng=' + swLng)
                 .map(result => result.json())
                 .subscribe(accommodations => self.renderAccommodations(accommodations));
         });
@@ -59,5 +60,3 @@ class GoogleMap {
         this.markers = [];
     }
 }
-
-bootstrap(GoogleMap, [HTTP_PROVIDERS]);
