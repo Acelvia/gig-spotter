@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class JobsController {
 
     @RequestMapping(value = "/jobs", produces = MediaType.APPLICATION_JSON)
     @ResponseBody
-    List<Result> jobs(@QueryParam("city") String city) {
-        return indeedClient.Get(city);
+    List<Result> jobs(@QueryParam("city") String city, 
+                      @QueryParam("q") String q) {
+        return indeedClient.Get(q, city);
     }
 }

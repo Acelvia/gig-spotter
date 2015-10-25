@@ -39,7 +39,7 @@ export class CityAutofillComponent extends Autofill {
   }
 
   fetchResults() {
-      this.http.get("/jobs?city=" + this.value)
+      this.http.get("/jobs?city=" + this.value + "&q=")
           .map(res => res.json())
           .subscribe(jobs => this.process(jobs));
   }

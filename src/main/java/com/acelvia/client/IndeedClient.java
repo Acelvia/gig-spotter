@@ -18,12 +18,14 @@ public class IndeedClient {
 
     private static String INDEED_ENDPOINT = "http://api.indeed.com/ads/apisearch";
 
-    public List<Result> Get(String city) {
+    public List<Result> Get(String query, String city) {
+        System.out.println(query+" - "+ city);
+
         Response response = ClientBuilder.newClient()
                 .target(INDEED_ENDPOINT)
                 .queryParam("publisher", settings.getIndeedApiKey())
                 .queryParam("v", 2)
-                .queryParam("q", "java")
+                .queryParam("q", query)
                 .queryParam("l", city)
                 .request(MediaType.APPLICATION_XML_TYPE)
                 .get(Response.class);
