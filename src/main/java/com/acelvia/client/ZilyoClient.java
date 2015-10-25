@@ -19,6 +19,7 @@ public class ZilyoClient {
         return ClientBuilder.newClient().target(ZILYO_ENDPOINT)
                 .queryParam("latitude", String.valueOf(latitude))
                 .queryParam("longitude", String.valueOf(longitude))
+                .queryParam("resultsperpage", 50)
                 .request().header("X-Mashape-Key", settings.getZilyoApiKey())
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
@@ -31,10 +32,9 @@ public class ZilyoClient {
                 .queryParam("nelongitude", northEastLongitude)
                 .queryParam("swlatitude", southWestLatitude)
                 .queryParam("swlongitude", southWestLongitude)
+                .queryParam("resultsperpage", 50)
                 .request().header("X-Mashape-Key", settings.getZilyoApiKey())
                 .accept(MediaType.APPLICATION_JSON_TYPE)
                 .get(String.class);
     }
-
-
 }

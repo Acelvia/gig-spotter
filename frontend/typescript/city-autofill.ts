@@ -1,4 +1,4 @@
-/// <reference path="./google.maps.d.ts" />
+/// <reference path="./typings/google.maps.d.ts" />
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {Component, Inject, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 import {Autofill} from './classes/autofill';
