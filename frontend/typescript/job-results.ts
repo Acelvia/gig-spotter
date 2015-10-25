@@ -1,6 +1,5 @@
-import {Component, Inject, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, Inject, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 import {JobListService} from './job-list';
-import {Job} from './classes/job';
 
 @Component({
   selector: 'job-results',
@@ -8,8 +7,6 @@ import {Job} from './classes/job';
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class JobResults {
-  jobs: Job[];
-  constructor(jls: JobListService){
-    this.jobs = jls.getJobs();
+  constructor(@Inject(JobListService) public jls){
   }
 }

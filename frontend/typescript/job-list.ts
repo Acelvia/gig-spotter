@@ -3,10 +3,16 @@ import {Injectable} from 'angular2/angular2';
 
 @Injectable ()
 export class JobListService {
-  jobs: Job[];
-  constructor() {}
+  private _jobs: Job[];
+  constructor() {
+    this._jobs = [];
+  }
 
   getJobs() {
-    return this.jobs;
+    return this._jobs;
+  }
+
+  setJobs(js) {
+    this._jobs = js;
   }
 }

@@ -1,5 +1,7 @@
-<input type="text" (keyup)="onChange($event)" [(ng-model)]="value" />
-<div>
-  <div *ng-for="#suggestion of suggestions" (click)="onSuggestionClick($event)">{{suggestion}}</div>
-  <job *ng-for="#job of jobs"><a href="{{job.url}}">{{job.jobtitle}}</a><br/></job>
+<div class="autofill">
+  <label class="autofill-label">{{inputLabel}}</label>
+  <input class="autofill-input" type="text" (keyup)="onChange($event)" [(ng-model)]="value" />
+  <div class="autofill-suggestions" [class.hidden]="suggestionsHidden">
+    <div *ng-for="#suggestion of suggestions" (click)="onSuggestionClick($event)">{{suggestion}}</div>
+  </div>
 </div>

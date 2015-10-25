@@ -1,9 +1,11 @@
 /// <reference path="./typings/google.maps.d.ts" />
 /// <reference path="./typings/markerclustererplus.d.ts" />
-import {Http, HTTP_PROVIDERS} from 'angular2/http';
-import {bootstrap, Component} from 'angular2/angular2';
+import {Http} from 'angular2/http';
+import {Component} from 'angular2/angular2';
 
 @Component({
+    selector: 'map',
+    templateUrl: 'templates/map.html'
 })
 export class GoogleMap {
 
@@ -11,10 +13,7 @@ export class GoogleMap {
     latitude = 60.1733343;
     longitude = 24.93227;
 
-    constructor(public http: Http) {
-    }
-
-    init() {
+    constructor(http: Http) {
         var self = this;
 
         var map = new google.maps.Map(document.getElementById('mapCanvas'), {
@@ -40,7 +39,7 @@ export class GoogleMap {
                 swLng = mapBounds.getSouthWest().lng();
 
             //http.get('/accommodation?latitude=' + self.latitude + '&longitude=' + self.longitude)
-            self.http.get('/accommodation?neLat=' + neLat + '&neLng=' + neLng + '&swLat=' + swLat + '&swLng=' + swLng)
+            http.get('/accommodation?neLat=' + neLat + '&neLng=' + neLng + '&swLat=' + swLat + '&swLng=' + swLng)
                 .map(result => result.json())
                 .subscribe(accommodations => self.renderAccommodations(accommodations));
         });

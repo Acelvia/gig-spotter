@@ -1,22 +1,20 @@
 /// <reference path="./typings/google.maps.d.ts" />
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
-import {Component, Inject, bootstrap, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
+import {Component, Inject, FORM_DIRECTIVES, CORE_DIRECTIVES} from 'angular2/angular2';
 import {Autofill} from './classes/autofill';
 import {JobListService} from './job-list';
 import {Job} from './classes/job';
-import {Injectable} from 'angular2/angular2';
 
-@Injectable ()
 @Component({
   selector: 'city-autofill',
   templateUrl: 'templates/autofill.html',
-  providers: [JobListService, HTTP_PROVIDERS],
+  providers: [HTTP_PROVIDERS],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class CityAutofillComponent extends Autofill {
   service: google.maps.places.AutocompleteService = null;
 
-  constructor(public http: Http, public jobListService: JobListService) {
+  constructor(private http: Http, @Inject(JobListService) private jls) {
     super();
     this.service = new google.maps.places.AutocompleteService();
     this.inputLabel = 'City';
@@ -47,13 +45,13 @@ export class CityAutofillComponent extends Autofill {
   }
 
   process(jobs) {
-      this.jobListService.jobs = [];
+      var js = [];
 
       for(var i = 0; i < jobs.length; i++) {
         var obj = jobs[i];
-        this.jobListService.jobs.push(new Job(obj.jobTitle, obj.jobUrl));
+        js.push(new Job(obj.jobtitle, obj.url));
       }
 
-      this.suggestionsHidden = !(this.jobListService.jobs.length > 0);
+      this.jls.setJobs(js);
   }
 }

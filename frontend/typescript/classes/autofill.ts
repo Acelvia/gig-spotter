@@ -19,6 +19,7 @@ export class Autofill {
   onSuggestionClick(event) {
     this.value = event.toElement.innerHTML;
     this.suggestions = [];
+    this.suggestionsHidden = true;
     this.fetchResults();
   }
 }

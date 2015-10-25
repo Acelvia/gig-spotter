@@ -1,4 +1,49 @@
+.header {
+  height: 70px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.header-logo {
+  font-size: 2em;
+  line-height: 70px;
+  display: inline-block;
+  font-family: fantasy;
+  padding-right: 1em;
+}
+
+.map-canvas-container {
+  padding-top: 70px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 500px;
+}
+
 #mapCanvas {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.autofill {
+  display: inline-block;
+  position: relative;
+}
+
+.autofill-label,
+.autofill-input {
+  display: block;
+}
+
+.autofill-suggestions {
+  position: absolute;
+  top: 100%;
+  background-color: white;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+}
+
+.autofill-suggestions.hidden {
+  display: none;
 }
