@@ -1,5 +1,6 @@
 package com.acelvia.controller;
 
+import com.acelvia.client.APIUsageException;
 import com.acelvia.client.ZilyoClient;
 import com.acelvia.client.zilyomodel.AccommodationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class MainController {
                                                     @QueryParam("neLat") String neLat,
                                                     @QueryParam("neLng") String neLng,
                                                     @QueryParam("swLat") String swLat,
-                                                    @QueryParam("swLng") String swLng) {
+                                                    @QueryParam("swLng") String swLng) throws APIUsageException {
         if (notEmpty(lat, lng)) {
             return zilyoClient.fetchListings(new Float(lat), new Float(lng));
         } else if (notEmpty(neLat, neLng, swLat, swLng)) {
