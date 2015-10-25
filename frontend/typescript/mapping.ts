@@ -38,18 +38,17 @@ export class GoogleMap {
                 swLat = mapBounds.getSouthWest().lat(),
                 swLng = mapBounds.getSouthWest().lng();
 
-            //http.get('/accommodation?latitude=' + self.latitude + '&longitude=' + self.longitude)
             http.get('/accommodation?neLat=' + neLat + '&neLng=' + neLng + '&swLat=' + swLat + '&swLng=' + swLng)
                 .map(result => result.json())
-                .subscribe(accommodations => self.renderAccommodations(accommodations));
+                .subscribe(result => self.renderAccommodations(result));
         });
     }
 
-    renderAccommodations(accommodations) {
+    renderAccommodations(result) {
         this.markerClusterer.clearMarkers();
-        this.markerClusterer.addMarkers(accommodations.result.map(function(result) {
-            var latLng = new google.maps.LatLng(result.latLng[0], result.latLng[1]);
+        this.markerClusterer.addMarkers(result.listings.map(function(listing) {
+            var latLng = new google.maps.LatLng(listing.latitude, listing.longitude);
             return new google.maps.Marker({ position: latLng });
-        }));
+        }), false);
     }
 }

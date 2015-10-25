@@ -1,0 +1,38 @@
+{
+  "ids": [
+    "air3290124",
+    "air1339771",
+    "air2085395"
+  ],
+  "queryType": "search",
+  "status": 200,
+  "page": 1,
+  "resultsPerPage": 3,
+  "amtOfNights": 0,
+  "sort": "default",
+  "isNearQuery": true,
+  "runtime": 24,
+  "result": [
+    {
+      "id": "air3290124",
+      "latLng": [
+        60.173780606838,
+        24.932198924238
+      ]
+    },
+    {
+      "id": "air1339771",
+      "latLng": [
+        60.173674914635,
+        24.929999522797
+      ]
+    },
+    {
+      "id": "air2085395",
+      "latLng": [
+        60.172421811195,
+        24.934932062549
+      ]
+    }
+  ]
+}
