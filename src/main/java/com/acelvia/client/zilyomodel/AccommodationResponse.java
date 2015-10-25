@@ -10,41 +10,18 @@ import java.util.List;
  * A response sent by Zilio to an accommodation search.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AccommodationResponse {
+public class AccommodationResponse extends ZilyoResponse {
 
-    private List<String> ids;
-    private int status;
-    private int page;
-    private int resultsPerPage;
     private List<Listing> listings;
 
     @JsonCreator
     public AccommodationResponse(@JsonProperty("ids") List<String> ids,
                                  @JsonProperty("status") int status,
                                  @JsonProperty("page") int page,
-                                 @JsonProperty("resultsperpage") int resultsPerPage,
+                                 @JsonProperty("resultsPerPage") int resultsPerPage,
                                  @JsonProperty("result") List<Listing> listings) {
-        this.ids = ids;
-        this.status = status;
-        this.page = page;
-        this.resultsPerPage = resultsPerPage;
+        super(ids, status, page, resultsPerPage);
         this.listings = listings;
-    }
-
-    public List<String> getIds() {
-        return ids;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public int getResultsPerPage() {
-        return resultsPerPage;
     }
 
     public List<Listing> getListings() {
